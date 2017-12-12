@@ -1,0 +1,39 @@
+{% set name = "crc16" %}
+{% set version = "0.1.1" %}
+{% set sha256sum = "c1f86aa0390f4baf07d2631b16b979580eae1d9a973a826ce45353a22ee8d396" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256sum }}
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  # Python imports
+  imports:
+    - crc16
+
+
+about:
+  home: http://code.google.com/p/pycrc16
+  license: GNU Library or Lesser General Public License (LGPL)
+  license_family: LGPL
+  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.txt'
+  summary: 'Library for calculating CRC16'
+
+extra:
+  recipe-maintainers:
+    - hellothisisMatt
